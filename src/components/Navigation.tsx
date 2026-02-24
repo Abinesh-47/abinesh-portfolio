@@ -15,7 +15,7 @@ export const Navigation: React.FC = () => {
   const location = useLocation();
 
   return (
-    <nav className="fixed top-0 left-0 w-full z-[100] px-8 md:px-[8%] py-6 flex justify-between items-center bg-[#020617]/90 backdrop-blur-xl border-b border-white/5">
+   <nav className="fixed top-0 left-0 w-full z-[100] px-8 md:px-[8%] py-8 flex justify-between items-center bg-[#020617] border-b border-white/5">
 
       {/* Logo */}
       <Link to="/">
