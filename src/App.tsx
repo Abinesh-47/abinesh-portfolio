@@ -17,7 +17,7 @@ const PageWrapper: React.FC<{ children: React.ReactNode }> = ({ children }) => {
       animate={{ opacity: 1, x: 0, filter: 'blur(0px)' }}
       exit={{ opacity: 0, x: -20, filter: 'blur(10px)' }}
       transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-      className="page-container"
+      className="min-h-screen"
     >
       <div className="max-w-7xl mx-auto px-[8%] h-full">
         {children}
@@ -67,7 +67,7 @@ const App: React.FC = () => {
 
   return (
     <Router>
-      <div className="relative h-screen w-screen bg-[#020617] text-white selection:bg-purple-500 selection:text-white overflow-hidden">
+      <div className="relative min-h-screen w-full bg-[#020617] text-white selection:bg-purple-500 selection:text-white">
         <AnimatePresence>
           {isLoading && (
             <motion.div
@@ -98,7 +98,7 @@ const App: React.FC = () => {
 
         <Navigation />
 
-        <main className="h-full w-full relative z-10">
+        <main className="relative z-10 pt-[110px]">
           <AnimatedRoutes />
         </main>
 
