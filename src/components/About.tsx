@@ -79,10 +79,10 @@ export const About: React.FC = () => {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
             {[
-              { icon: <Target className="w-5 h-5" />, title: "Vision", desc: "Machine Learning Engineering" },
-              { icon: <Zap className="w-5 h-5" />, title: "Focus", desc: "Deep Learning & Neural Networks" },
-              { icon: <Award className="w-5 h-5" />, title: "Standard", desc: "Data Analytics & Visualization" },
-              { icon: <User className="w-5 h-5" />, title: "Role", desc: "AI Application Development" },
+              { icon: <Target className="w-5 h-5" />, title: "Vision", desc: "Autonomous Intelligence" },
+              { icon: <Zap className="w-5 h-5" />, title: "Focus", desc: "Neural Architectures" },
+              { icon: <Award className="w-5 h-5" />, title: "Standard", desc: "Excellence in Data" },
+              { icon: <User className="w-5 h-5" />, title: "Role", desc: "AI Strategist" },
             ].map((item, i) => (
               <motion.div
                 key={i}
