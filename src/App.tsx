@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { BrowserRouter as Router, Routes, Route, useLocation, Navigate } from 'react-router-dom';
@@ -19,7 +18,8 @@ const PageWrapper: React.FC<{ children: React.ReactNode }> = ({ children }) => {
       transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
       className="min-h-screen"
     >
-      <div className="max-w-7xl mx-auto px-[8%] h-full">
+      {/* Responsive padding */}
+      <div className="max-w-7xl mx-auto px-6 md:px-[8%]">
         {children}
       </div>
     </motion.div>
@@ -67,7 +67,10 @@ const App: React.FC = () => {
 
   return (
     <Router>
-      <div className="relative min-h-screen w-full bg-[#020617] text-white selection:bg-purple-500 selection:text-white">
+      {/* ROOT CONTAINER FIXED */}
+      <div className="relative min-h-screen w-full bg-[#020617] text-white selection:bg-purple-500 selection:text-white overflow-x-hidden">
+
+        {/* Loader */}
         <AnimatePresence>
           {isLoading && (
             <motion.div
@@ -79,11 +82,12 @@ const App: React.FC = () => {
               <motion.div 
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="text-6xl font-royal mb-8 tracking-tighter"
+                className="text-4xl md:text-6xl font-royal mb-8 tracking-tighter"
               >
                 Abinesh<span className="text-purple-500">.</span>
               </motion.div>
-              <div className="w-64 h-[1px] bg-white/5 rounded-full overflow-hidden relative">
+
+              <div className="w-48 md:w-64 h-[1px] bg-white/5 rounded-full overflow-hidden relative">
                 <motion.div 
                   initial={{ x: '-100%' }}
                   animate={{ x: '100%' }}
@@ -91,24 +95,34 @@ const App: React.FC = () => {
                   className="w-full h-full bg-gradient-to-r from-transparent via-purple-500 to-transparent"
                 />
               </div>
-              <p className="mt-6 text-[10px] uppercase tracking-[0.8em] text-gray-500 font-light">Establishing Royal Protocol</p>
+
+              <p className="mt-6 text-[10px] uppercase tracking-[0.8em] text-gray-500 font-light">
+                Establishing Royal Protocol
+              </p>
             </motion.div>
           )}
         </AnimatePresence>
 
+        {/* Navigation */}
         <Navigation />
 
-        <main className="relative z-10 pt-[110px]">
+        {/* Main Content */}
+        <main className="relative z-10 pt-[100px] md:pt-[110px]">
           <AnimatedRoutes />
         </main>
 
         {/* Royal Cursor Glow */}
         <div className="fixed pointer-events-none z-0 mix-blend-screen opacity-30">
-           <div id="royal-cursor" className="w-[600px] h-[600px] bg-purple-900/40 rounded-full blur-[120px] -translate-x-1/2 -translate-y-1/2 fixed top-0 left-0 transition-transform duration-300 ease-out" />
+          <div
+            id="royal-cursor"
+            className="w-[400px] md:w-[600px] h-[400px] md:h-[600px] bg-purple-900/40 rounded-full blur-[120px] -translate-x-1/2 -translate-y-1/2 fixed top-0 left-0 transition-transform duration-300 ease-out"
+          />
         </div>
 
-        {/* Background Texture & Particles */}
-        <div className="fixed inset-0 pointer-events-none opacity-[0.03] z-[-1] bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]"></div>
+        {/* Background Texture */}
+        <div className="fixed inset-0 w-full h-full pointer-events-none opacity-[0.03] z-[-1] bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] bg-cover bg-center"></div>
+
+        {/* Floating Particles */}
         <div className="fixed inset-0 pointer-events-none z-[-1] overflow-hidden">
           {[...Array(20)].map((_, i) => (
             <motion.div
@@ -132,6 +146,7 @@ const App: React.FC = () => {
             />
           ))}
         </div>
+
       </div>
     </Router>
   );
