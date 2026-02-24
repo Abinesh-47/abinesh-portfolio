@@ -64,7 +64,7 @@ export const About: React.FC = () => {
           >
             "In the intersection of data and elegance lies the future of intelligence." 
             <br/><br/>
-            I am a dedicated AI Engineer and Data Scientist, committed to crafting sophisticated neural architectures that solve complex real-world challenges with royal precision.
+            I am an AI & Data Science Engineer focused on building intelligent systems that transform raw data into actionable insights. My work spans machine learning, deep learning, and full-stack AI deployment, with a passion for solving real-world problems through practical and scalable solutions.
           </motion.p>
 
           <motion.div 
@@ -79,10 +79,10 @@ export const About: React.FC = () => {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
             {[
-              { icon: <Target className="w-5 h-5" />, title: "Vision", desc: "Autonomous Intelligence" },
-              { icon: <Zap className="w-5 h-5" />, title: "Focus", desc: "Neural Architectures" },
-              { icon: <Award className="w-5 h-5" />, title: "Standard", desc: "Excellence in Data" },
-              { icon: <User className="w-5 h-5" />, title: "Role", desc: "AI Strategist" },
+              { icon: <Target className="w-5 h-5" />, title: "Vision", desc: "Machine Learning Engineering" },
+              { icon: <Zap className="w-5 h-5" />, title: "Focus", desc: "Deep Learning & Neural Networks" },
+              { icon: <Award className="w-5 h-5" />, title: "Standard", desc: "Data Analytics & Visualization" },
+              { icon: <User className="w-5 h-5" />, title: "Role", desc: "AI Application Development" },
             ].map((item, i) => (
               <motion.div
                 key={i}
