@@ -1,6 +1,7 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Link, useLocation } from 'react-router-dom';
+import { Menu, X } from 'lucide-react';
 
 const navItems = [
   { name: 'Home', path: '/' },
@@ -13,20 +14,19 @@ const navItems = [
 
 export const Navigation: React.FC = () => {
   const location = useLocation();
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
-   <nav className="fixed top-0 left-0 w-full z-[100] px-8 md:px-[8%] py-8 flex justify-between items-center bg-[#020617] border-b border-white/5">
+    <nav className="fixed top-0 left-0 w-full z-[100] px-6 md:px-[8%] py-6 flex justify-between items-center bg-[#020617] border-b border-white/5">
 
       {/* Logo */}
       <Link to="/">
         <motion.div
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
-          className="text-2xl font-royal tracking-tighter cursor-pointer flex items-center gap-2 group"
+          className="text-xl md:text-2xl font-royal tracking-tighter flex items-center gap-2"
         >
-          <span className="text-white group-hover:text-purple-400 transition-colors">
-            Abinesh R
-          </span>
+          <span className="text-white">Abinesh R</span>
           <span className="w-1.5 h-1.5 rounded-full bg-purple-500 shadow-[0_0_10px_rgba(168,85,247,0.8)]" />
         </motion.div>
       </Link>
@@ -41,7 +41,7 @@ export const Navigation: React.FC = () => {
           <Link
             key={item.name}
             to={item.path}
-            className={`hover:text-white transition-all relative group py-2 ${
+            className={`hover:text-white transition relative py-2 ${
               location.pathname === item.path ? 'text-white' : ''
             }`}
           >
@@ -57,11 +57,8 @@ export const Navigation: React.FC = () => {
         ))}
       </motion.div>
 
-      {/* Connect Button */}
-      <motion.div
-        initial={{ opacity: 0, x: 20 }}
-        animate={{ opacity: 1, x: 0 }}
-      >
+      {/* Desktop Connect Button */}
+      <div className="hidden lg:block">
         <Link to="/contact">
           <motion.button
             whileHover={{
@@ -69,12 +66,49 @@ export const Navigation: React.FC = () => {
               boxShadow: '0 0 20px rgba(168, 85, 247, 0.3)',
             }}
             whileTap={{ scale: 0.95 }}
-            className="px-8 py-3 rounded-full border border-purple-500/30 bg-purple-500/10 text-white text-[11px] font-medium tracking-[0.2em] hover:bg-purple-500 hover:text-white transition-all uppercase"
+            className="px-6 py-2 rounded-full border border-purple-500/30 bg-purple-500/10 text-white text-[11px] uppercase hover:bg-purple-500 transition-all"
           >
             Connect
           </motion.button>
         </Link>
-      </motion.div>
+      </div>
+
+      {/* Mobile Menu Button */}
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+        className="lg:hidden text-white"
+      >
+        {isOpen ? <X size={28} /> : <Menu size={28} />}
+      </button>
+
+      {/* Mobile Dropdown Menu */}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            className="absolute top-full left-0 w-full bg-[#020617] border-t border-white/10 flex flex-col items-center gap-6 py-8 lg:hidden"
+          >
+            {navItems.map((item) => (
+              <Link
+                key={item.name}
+                to={item.path}
+                onClick={() => setIsOpen(false)}
+                className="text-gray-300 uppercase text-sm hover:text-white transition"
+              >
+                {item.name}
+              </Link>
+            ))}
+
+            <Link to="/contact" onClick={() => setIsOpen(false)}>
+              <button className="px-6 py-3 rounded-full bg-purple-600 text-white text-xs uppercase">
+                Connect
+              </button>
+            </Link>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
     </nav>
   );
