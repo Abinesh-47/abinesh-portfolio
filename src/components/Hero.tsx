@@ -94,7 +94,7 @@ export const Hero: React.FC = () => {
           </Link>
           
           <motion.a 
-            href={`${import.meta.env.BASE_URL}AbineshCV.pdf`} 
+            href={`${import.meta.env.BASE_URL}AbineshResume.pdf`} 
             target="_blank"
             rel="noopener noreferrer"
             whileHover={{ scale: 1.05, borderColor: "rgba(168, 85, 247, 0.5)" }}
@@ -103,7 +103,7 @@ export const Hero: React.FC = () => {
           >
              <div className="absolute inset-0 bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity" />
              <Download className="w-4 h-4 text-purple-400" />
-             <span className="relative text-white font-semibold text-[11px] tracking-[0.2em] uppercase">Download CV</span>
+             <span className="relative text-white font-semibold text-[11px] tracking-[0.2em] uppercase">Download Resume</span>
           </motion.a>
         </motion.div>
       </motion.div>
